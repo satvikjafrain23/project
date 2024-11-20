@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAATairs - Flight Booking</title>
+    <style>
+        /* General Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #e0f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 2em;
+            color: #007bb5;
+        }
+
+        header p {
+            color: #007bb5;
+            font-size: 1em;
+        }
+
+        .page h2 {
+            color: #007bb5;
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #007bb5;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            background-color: #007bb5;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #005f8d;
+        }
+
+        .page ul {
+            list-style-type: none;
+            margin-top: 10px;
+        }
+
+        .page ul li {
+            background-color: #f1f1f1;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>✈ JAATairs</h1>
+            <p>Book your flights with ease</p>
+        </header>
+
+        <!-- Sign In Page -->
+        <div class="page" id="signin-page">
+            <h2>Sign In</h2>
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" placeholder="Enter your phone number">
+            <button onclick="showPage('otp-page')">Next</button>
+        </div>
+
+        <!-- OTP Page -->
+        <div class="page" id="otp-page" style="display: none;">
+            <h2>Enter OTP</h2>
+            <label for="otp">OTP:</label>
+            <input type="text" id="otp" placeholder="Enter OTP">
+            <button onclick="showPage('search-page')">Verify</button>
+        </div>
+
+        <!-- Flight Search Page -->
+        <div class="page" id="search-page" style="display: none;">
+            <h2>Book a Flight</h2>
+            <label for="from">From:</label>
+            <input type="text" id="from" placeholder="Departure Airport">
+
+            <label for="to">To:</label>
+            <input type="text" id="to" placeholder="Arrival Airport">
+
+            <button onclick="showPage('results-page')">Search Flights</button>
+        </div>
+
+        <!-- Flight Results Page -->
+        <div class="page" id="results-page" style="display: none;">
+            <h2>Available Flights</h2>
+            <p>Showing flights from your selected route:</p>
+            <ul>
+                <li>Flight JA101 - 10:00 AM - 2:00 PM</li>
+                <li>Flight JA102 - 12:00 PM - 4:00 PM</li>
+                <li>Flight JA103 - 3:00 PM - 7:00 PM</li>
+            </ul>
+            <button onclick="showPage('search-page')">Search Again</button>
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.style.display = 'none');
+
+            // Show the selected page
+            document.getElementById(pageId).style.display = 'block';
+        }
+    </script>
+</body>
+</html>
